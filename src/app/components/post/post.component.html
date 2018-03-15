@@ -3,15 +3,15 @@
     <h1>Create Post</h1>
 <form  ngForm #f="ngForm" (ngSubmit)="submiitedForm(f)">
   <div class="form-group">
-<input type="text" required class="form-control" ngModel #title="ngModel" name="title">
+<input type="text" required class="form-control" ngModel #ctitle="ngModel" name="ctitle">
 </div>
-<div class="alert alert-danger" *ngIf="title.touched &&  !title.valid">
+<div class="alert alert-danger" *ngIf="ctitle.touched &&  !ctitle.valid">
 Title is reqired.
 </div>
 <div class="form-group">
-<textarea class="form-control" required name="body" #body="ngModel" ngModel></textarea>
+<textarea class="form-control" required name="cbody" #cbody="ngModel" ngModel></textarea>
 </div>
-<div class="alert alert-danger" *ngIf="body.touched &&  !body.valid">
+<div class="alert alert-danger" *ngIf="cbody.touched &&  !cbody.valid">
  Body is required.
 </div>
 <button class="btn" [class.btn-danger]="!f.valid" [class.btn-success]="f.valid" [disabled]= "!f.valid">Create Post</button>
@@ -23,6 +23,9 @@ Title is reqired.
 <ul class="list-group" [hidden]="isUpdate">
   <li *ngFor="let post of posts;" class="list-group-item"><b> Title:</b> {{post.title}} <br><b>Body:</b> {{post.body}} <button class="btn btn-danger btn-sm pull-right" (click)="deletePost(post)">delete</button><button class="btn btn-primary btn-sm pull-right" (click)="changeToUpdate(post)">Update</button></li>  
 </ul>
+<div class="alert alert-danger" *ngIf = "posts == ''" [hidden]="isUpdate" >
+Sorry nothing to display..
+</div>
 </div>
 <div class="container" [hidden]="!isUpdate">
   <h1>Update Post</h1>

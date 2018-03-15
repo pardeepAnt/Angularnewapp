@@ -1,6 +1,7 @@
 import { PostService } from './../../services/post.service';
 import { environment } from './../../../environments/environment';
 import { Component, OnInit } from '@angular/core';
+import { empty } from 'rxjs/Observer';
 
 @Component({
   selector: 'app-post',
@@ -23,7 +24,7 @@ export class PostComponent implements OnInit {
    }
    submiitedForm(form){
     
-    let varcheck = {id:1,title:form.value.title,body:form.value.body};
+    let varcheck = {id:1,title:form.value.ctitle,body:form.value.cbody};
       
     this.service.createPost(form).subscribe(response=>{
      this.posts.splice(0,0,varcheck);
@@ -45,6 +46,7 @@ export class PostComponent implements OnInit {
       this.posts = response.json();
     
        });
+      
   }
   changeToUpdate(post){
     this.isUpdate = !this.isUpdate;
@@ -65,4 +67,5 @@ export class PostComponent implements OnInit {
       this.updateposts = [];
       });
   }
+ 
 }
