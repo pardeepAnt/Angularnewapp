@@ -1,37 +1,34 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { FormsModule }   from '@angular/forms';
-import { UsersService } from './store/users.service';
+import { FormsModule , ReactiveFormsModule }   from '@angular/forms';
+import { PostService } from './services/post.service';
 import { HttpModule } from '@angular/http';
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/header/header.component';
-import { FooterComponent } from './components/footer/footer.component';
-import { UserComponent } from './components/user/user.component';
-const appRoutes: Routes = [
-{
-  path:'addUser',component:UserComponent
-}
-];
+import { TestingComponent } from './components/testing/testing.component'
+import { CustomPipe } from './custom.pipe';
+import { CourseComponent } from './components/course/course.component';
+import { FavouriteComponent } from './components/favourite/favourite.component';
+import { PostComponent } from './components/post/post.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    UserComponent
-    
+    TestingComponent,
+    CustomPipe,
+    CourseComponent,
+    FavouriteComponent,
+    PostComponent 
+
   ],
   imports: [
     BrowserModule,
-    RouterModule.forRoot(
-      appRoutes
-    ),
     FormsModule,
     HttpModule
-
+      
   ],
-  providers: [UsersService],
+  providers: [PostService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

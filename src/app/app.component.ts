@@ -7,4 +7,14 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'Zonguru';
+  post = {
+    title:"title",
+    isFavourite:false
+  }
+  review = {
+    
+  }
+  changefavourites(v){
+    console.log("yes event has changed"+v);
+  }
 }

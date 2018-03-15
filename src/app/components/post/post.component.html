@@ -1,0 +1,42 @@
+<div class="container" [hidden]="isUpdate" >
+<form  ngForm #f="ngForm" (ngSubmit)="submiitedForm(f)">
+  <div class="form-group">
+<input type="text" required class="form-control" ngModel #title="ngModel" name="title">
+</div>
+<div class="alert alert-danger" *ngIf="title.touched &&  !title.valid">
+Title is reqired.
+</div>
+<div class="form-group">
+<textarea class="form-control" required name="body" #body="ngModel" ngModel></textarea>
+</div>
+<div class="alert alert-danger" *ngIf="body.touched &&  !body.valid">
+ Body is required.
+</div>
+<button class="btn" [class.btn-danger]="!f.valid" [class.btn-success]="f.valid" [disabled]= "!f.valid">Create Post</button>
+
+
+
+</form>
+
+<ul class="list-group" [hidden]="isUpdate">
+  <li *ngFor="let post of posts;" class="list-group-item"><b> Title:</b> {{post.title}} <br><b>Body:</b> {{post.body}} <button class="btn btn-danger btn-sm pull-right" (click)="deletePost(post)">delete</button><button class="btn btn-primary btn-sm pull-right" (click)="changeToUpdate(post)">Update</button></li>  
+</ul>
+</div>
+<div class="container" [hidden]="!isUpdate">
+  <form #uf="ngForm" ngForm (ngSubmit)="updatePost(uf)">
+    <div class="form-group">
+      <input type="text" required class="form-control"  [(ngModel)] = "utitle" #title="ngModel" name="title">
+      </div>
+      <div class="alert alert-danger" *ngIf="title.touched &&  !title.valid">
+      Title is reqired.
+      </div>
+      <div class="form-group">
+      <textarea class="form-control" [(ngModel)] = "ubody"  required name="body" #body="ngModel" ngModel></textarea>
+      </div>
+      <div class="alert alert-danger" *ngIf="body.touched &&  !body.valid">
+       Body is required.
+      </div>
+      <button class="btn"  [class.btn-danger]="!uf.valid" [class.btn-success]="uf.valid" [disabled]= "!uf.valid">Update Post</button>
+      <button class="btn btn-danger" >cancel</button>
+  </form>
+</div>
