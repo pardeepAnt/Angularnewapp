@@ -1,4 +1,6 @@
+
 <div class="container" [hidden]="isUpdate" >
+    <h1>Create Post</h1>
 <form  ngForm #f="ngForm" (ngSubmit)="submiitedForm(f)">
   <div class="form-group">
 <input type="text" required class="form-control" ngModel #title="ngModel" name="title">
@@ -23,6 +25,7 @@ Title is reqired.
 </ul>
 </div>
 <div class="container" [hidden]="!isUpdate">
+  <h1>Update Post</h1>
   <form #uf="ngForm" ngForm (ngSubmit)="updatePost(uf)">
     <div class="form-group">
       <input type="text" required class="form-control"  [(ngModel)] = "utitle" #title="ngModel" name="title">
@@ -36,7 +39,7 @@ Title is reqired.
       <div class="alert alert-danger" *ngIf="body.touched &&  !body.valid">
        Body is required.
       </div>
-      <button class="btn"  [class.btn-danger]="!uf.valid" [class.btn-success]="uf.valid" [disabled]= "!uf.valid">Update Post</button>
-      <button class="btn btn-danger" >cancel</button>
+      <button class="btn" type="submit"  [class.btn-danger]="!uf.valid" [class.btn-success]="uf.valid" [disabled]= "!uf.valid">Update Post</button>
+      <input type="button" class="btn btn-danger" (click)="isUpdate=false;" value="Cancel">
   </form>
 </div>

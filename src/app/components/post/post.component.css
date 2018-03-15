@@ -1,0 +1,8 @@
+li{
+    padding: 20px;
+}
+.btn-sm{
+margin: 2px;
+}
+li:nth-child(odd) { background-color:#D8D7D7 }
+li:nth-child(even) { background-color: #fff }

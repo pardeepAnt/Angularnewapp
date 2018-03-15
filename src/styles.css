@@ -2,4 +2,6 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 body{
     margin: 20px; 
+     background-color: beige;
+    
 }
