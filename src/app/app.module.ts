@@ -1,3 +1,4 @@
+import { AppErrorHandler } from './common/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
@@ -11,7 +12,7 @@ import { IsemptyPipe } from './isempty.pipe';
 import { CourseComponent } from './components/course/course.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import { PostComponent } from './components/post/post.component';
-
+import { ErrorHandler } from '@angular/core';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,10 @@ import { PostComponent } from './components/post/post.component';
     HttpModule
       
   ],
-  providers: [PostService],
+  providers: [PostService,
+    {provide: ErrorHandler, useClass: AppErrorHandler}
+  
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
