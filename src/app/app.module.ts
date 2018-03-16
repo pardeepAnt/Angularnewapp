@@ -1,3 +1,4 @@
+
 import { AppErrorHandler } from './common/app-error-handler';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
@@ -13,7 +14,8 @@ import { CourseComponent } from './components/course/course.component';
 import { FavouriteComponent } from './components/favourite/favourite.component';
 import { PostComponent } from './components/post/post.component';
 import { ErrorHandler } from '@angular/core';
-
+import { NotfoundComponent } from './components/notfound/notfound.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,13 +24,20 @@ import { ErrorHandler } from '@angular/core';
     CourseComponent,
     FavouriteComponent,
     PostComponent,
-    IsemptyPipe
+    IsemptyPipe,
+    NotfoundComponent,
+    NavbarComponent
 
   ],
   imports: [
     BrowserModule,
     FormsModule,
-    HttpModule
+    HttpModule,
+    RouterModule.forRoot([
+    { path:'',component :PostComponent},
+    { path:'post',component:PostComponent},
+    { path:'**',component:NotfoundComponent}
+    ])
       
   ],
   providers: [PostService,
